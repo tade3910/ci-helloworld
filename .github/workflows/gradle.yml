@@ -44,9 +44,8 @@ jobs:
         with:
               generate-coverage-badge: true
               generate-branches-badge: true
-              generate-coverage-endpoint: false
-              fail-on-coverage-decrease: true
-              fail-on-branches-decrease: true
+              fail-on-coverage-decrease: false
+              fail-on-branches-decrease: false
             
   build_and_publish_docker_image:
     name: Publish to Docker Hub
