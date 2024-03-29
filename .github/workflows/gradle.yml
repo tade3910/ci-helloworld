@@ -26,11 +26,11 @@ jobs:
       - name: Setting Permissions
         run: cd ci-helloworld && chmod a+x gradlew
       - name: Build with Gradle
-        run: ls && ./ci-helloworld/gradlew build
-        # uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
-        # with:
-        #   arguments: build
-        #   gradle-executable: ./ci-helloworld/gradlew
+        # run: ls && ./ci-helloworld/gradlew build
+        uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
+        with:
+          arguments: build
+          gradle-executable: ./ci-helloworld
       - name: Test with Gradle
         # uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
         # with:
