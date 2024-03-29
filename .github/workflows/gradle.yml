@@ -21,28 +21,25 @@ jobs:
         with:
           java-version: '11'
           distribution: 'temurin'
-      - name: Checking directory
-        run : ls
       - name: Setting Permissions
-        run: cd ci-helloworld && chmod a+x gradlew
+        run: cd ci-helloworld && chmod a+x gradlew 
+        # Had to update this line
       - name: Build with Gradle
-        # run: ls && ./ci-helloworld/gradlew build
         uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
         with:
           arguments: build
-          gradle-executable: ./ci-helloworld
       - name: Test with Gradle
-        # uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
-        # with:
-        #   arguments: test
-        run : ls && ./ci-helloworld/gradlew test
+        uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
+        with:
+          arguments: test
       - name: Run Test Coverage
-        run: ls && ./ci-helloworld/gradlew jacocoTestReport
+        run: ./gradlew jacocoTestReport
       - name: Jacoco
         uses: cicirello/jacoco-badge-generator@v2.9.0
         with:
           jacoco-csv-file: build/reports/jacoco/test/jacocoTestReport.csv
           fail-if-branches-less-than: 100
+
 
   build_and_publish_docker_image:
     name: Publish to Docker Hub
