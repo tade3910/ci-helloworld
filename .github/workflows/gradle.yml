@@ -26,7 +26,7 @@ jobs:
       - name: Setting Permissions
         run: cd ci-helloworld && chmod a+x gradlew
       - name: Build with Gradle
-        run: ls && ./gradlew build
+        run: ls && ./ci-helloworld/gradlew build
         # uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
         # with:
         #   arguments: build
@@ -35,9 +35,9 @@ jobs:
         # uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
         # with:
         #   arguments: test
-        run : ./gradlew test
+        run : ls && ./ci-helloworld/gradlew test
       - name: Run Test Coverage
-        run: ./gradlew jacocoTestReport
+        run: ls && ./ci-helloworld/gradlew jacocoTestReport
       - name: Jacoco
         uses: cicirello/jacoco-badge-generator@v2.9.0
         with:
